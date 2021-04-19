@@ -169,3 +169,148 @@ function checkObj(checkProp) {
 console.log(checkObj("gift"));
 
 // Manipulating Complex Objects -> 1:59:15
+
+var myMusic = [
+    {
+        "artist": "Billy Joel",
+        "title": "Piano Man",
+        "release_year": 1973,
+        "formats": [
+            "CD",
+            "8T",
+            "LP"
+        ],
+        "gold": true
+    },
+    // Add record here
+    {
+        "artist": "Beau Crnes",
+        "title": "Cereal Man",
+        "release_year": 2003,
+        "formats": [
+            "YouTube Video"
+        ],
+        "gold": true
+    }
+];
+
+// Accessing Nested Objects
+var myStorage = {
+    "car": {
+        "inside": {
+            "glove box":"maps",
+            "passenger seat": "crumbs"
+        },
+        "outside":{
+            "trunk":"jack"
+        }
+    }
+};
+
+var globeBoxContents = myStorage.car.inside["glove box"]; // Change this line
+
+console.log(globeBoxContents);
+
+// Accessing Nested Arrays
+
+// Setup
+var myPlants = [
+    {                    //INDEX 0
+        type: "flowers",
+        list: [
+            "rose",
+            "tulip",
+            "dandelion"
+        ]
+    },
+
+    {                   //INDEX 1
+        type: "trees",
+        list: [
+            "fir",
+            "pine",
+            "birch"
+        ]
+    }
+];
+
+// Only change code below this line
+var secondTree = myPlants[1].list[1]; // Change this line
+
+console.log(secondTree);
+
+// Record Collection
+//Setup
+
+var collection = {
+    "2548":{
+        "album": "Slippery When Wet",
+        "artist": "Bon Jovi",
+        "tracks": [
+            "Let it Rock",
+            "You Give Love a Bad Name"
+        ]
+    },
+    "2468":{
+        "album":"1999",
+        "artist":"Prince",
+        "tracks":[
+            "1999",
+            "Little Red Corvette"
+        ]
+    },
+    "1245":{
+        "artist": "Red Hot Chilli Peppers",
+        "tracks": []
+    },
+    "5439": {
+        "album": "ABBA Gold"
+    }
+};
+
+// Keep a copy of the collection for tests
+var collectionCopy = JSON.parse(JSON.stringify(collection));
+
+// Conly change code below this line
+function updateRecords(id,prop,value) { //prop = album, //value = track 
+    if(collection.hasOwnProperty(id)){
+        if(collection[id].hasOwnProperty(prop)){
+            console.log("This album already exist")
+
+            // Adding track
+            if(collection[id].hasOwnProperty("tracks")){
+                collection[id].tracks.push(value);
+            }
+
+            else {
+                collection[id].tracks = [];
+                collection[id].tracks.push(value);
+            }
+
+        }
+
+        else {
+            // Adding album
+            collection[id].album = prop;
+
+            // Adding track
+            if(collection[id].hasOwnProperty("tracks")){
+                collection[id].tracks.push(value);
+            }
+
+            else {
+                collection[id].tracks = [];
+                collection[id].tracks.push(value);
+            }
+        }
+    }
+
+    else{
+        console.log("This item doesn't exist")
+    }
+
+
+    return collection;
+}
+
+console.log(updateRecords("2548","Slippery When Wet","Living on a Prayer"))
