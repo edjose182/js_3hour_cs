@@ -253,6 +253,58 @@ const half = (function () {
 console.log(stats);
 console.log(half(stats)); //-> 3:06:14
 
+// Create Strings using Template Literals //-> 3:06:40
+const person = {
+    name: "Zodiac Hasbro",
+    age:56
+};
 
+// Template literal with multi-line and string interpolation
+const greeting = `Hello, my name is ${person.name}!
+
+I am ${person.age} years old.`;
+
+console.log(greeting);
+
+const result = {
+    success: ["max-length", "no-amd", "prefer-arrow_functions"],
+    failure: ["no-var","var-on-top","linebreak"],
+    skipped: ["id-blacklist","no-dup-keys"]
+};
+
+function makeList(arr) {
+    const resultDisplayArray = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        var message = `<li class= "text-warning">${arr[i]}</li>`
+        resultDisplayArray[i] = message;
+    }
+
+    return resultDisplayArray;
+}
+
+/**
+ * makeList(result.failure) should return:
+ * [ `<li class="text-warning">no-var</li>`,
+ *   `<li class="text-warning">var-on-top</li>`,
+ *   `<li class="text-warning">linebreak</li>` ]
+ */
+
+const resultDisplayArray = makeList(result.failure);
+console.log(resultDisplayArray);
+
+// Write Concise Object Literal Declarations Using Simple Fields -> 3:10:44
+const createPerson = (name,age,gender) => ({name,age,gender});
+/*{
+    return{
+        name: name,
+        age: age,
+        gender: gender
+    };
+};*/
+
+console.log(createPerson("Zodiac Hasbro, 56, male"));
+
+// Write Concise Declarative Functions -> 3:12:24
 
 
